@@ -10,7 +10,7 @@ interface CoinProps{
      low_24h: string;
      high_24h: string;
      total_volume_24h: string;
-     delta_24h: string;
+     delta_24h: any;
      formatedPrice: string;
      formatedMarket: string;
      formatedLowprice: string;
@@ -60,8 +60,30 @@ export function Detail(){
     }
     return(
         <div className={styles.container}>
-            <h1 className={styles.center}>{detail.name}</h1>
-            <p className={styles.center}>{detail.symbol}</p>
+            <h1 className={styles.center}>{detail?.name}</h1>
+            <p className={styles.center}>{detail?.symbol}</p>
+
+            <section className={styles.content}>
+                <p>
+                   <strong>Preco:</strong> {detail?.formatedPrice}
+                </p>
+                <p>
+                   <strong>Maior preco 24h:</strong> {detail?.formatedPrice}
+                </p>
+                <p>
+                   <strong>Maior preco 24h:</strong> {detail?.formatedLowprice}
+                </p>
+                <p>
+                   <strong>Delta 24h:</strong>
+                   <span className={parseFloat(detail?.delta_24h.replace(',', '.')) >= 0 ? styles.profit : styles.loss}>
+                    {detail?.delta_24h}
+                   </span>
+                </p>
+                <p>
+                   <strong>Valor total de mercado:</strong> {detail?.formatedMarket}
+                </p>
+            </section>
         </div>
+        
     )
 }

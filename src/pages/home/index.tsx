@@ -29,7 +29,7 @@ export function Home() {
             fetch('https://sujeitoprogramador.com/api-cripto/?key=d8fefd7283061911')
                 .then(response => response.json())
                 .then((data: DataProps) => {
-                    let coinsData = data.coins.slice(0, 21);
+                    let coinsData = data.coins.slice(0, 20);
 
                     let price = Intl.NumberFormat("pt-BR", {
                         style: 'currency',
